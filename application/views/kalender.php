@@ -1,8 +1,5 @@
-<h1>Kalender</h1>
-
-
 <?php
-
+echo link_tag('css/style.css');
 $maanden = array("", "januari","februari","maart","april","mei","juni","juli","augustus","september","oktober","november","december");
 
 $laatsemaand = '';
@@ -25,22 +22,22 @@ foreach ($dataview as $resultaat){
 
 if ($laatsemaand != $month){
     echo '<h1>' . $maanden[$month] . '</h1>';
+    $laatstedag = '';
 }
 
 if ($laatstedag != $resultaat['day']) {
-    echo '<p>' . $resultaat['day'] . '</p>';
+    echo '<h2>' . $resultaat['day'] . '</h2>';
 }
 
 ?>
-    <a href="<?php  ?>">
+   <p> <a href="<?php echo base_url("verjaardag/verjaardag_aanpassen/" . $resultaat['id']) ?>">
        <?php echo $resultaat['person']; ?> (<?php echo $resultaat['year']; ?>)</a>
 
 
-    <p>
 
 
-        <a href="<?php echo base_url('verjaardag/verjaardag_verwijderen/' . $resultaat['id']) ?>">x</a>
-    </p>
+      <a onclick="return ConfirmDelete();" type="submit" name="actiondelete" value="1" href="<?php echo base_url('verjaardag/verjaardag_verwijderen/' . $resultaat['id']) ?>">x</a></p>
+
 <?php
 
 
@@ -49,12 +46,23 @@ if ($laatstedag != $resultaat['day']) {
 $laatsemaand = $resultaat['month'];
 $laatstedag = $resultaat['day'];
 
+
 }
 ?>
+<script>
+    function ConfirmDelete()
+    {
+        var x = confirm("Are you sure you want to delete?");
+        if (x)
+            return true;
+        else
+            return false;
+    }
+</script>
 
 
-
+<p>
 <a href="verjaardag/verjaardag_toevoegen">Voeg nieuwe toe</a>
 
-
+</p>
 
