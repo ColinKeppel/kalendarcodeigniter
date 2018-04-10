@@ -1,4 +1,4 @@
-<?php
+  <?php
 
 class home_model extends CI_Model
 {
@@ -18,13 +18,13 @@ class home_model extends CI_Model
         $query = $this->db->get();
         if ($query->num_rows()) {
             foreach ($query->result_array() as $row) {
-                $dbdata[] = [
+                $dbdata[] = array(
                     'id' => $row['id'],
                     'person' => $row['person'],
                     'month' => $row['month'],
                     'day' => $row['day'],
                     'year' => $row['year'],
-                ];
+                );
             }
         }
         return $dbdata;

@@ -1,5 +1,5 @@
 <?php
-echo link_tag('css/style.css');
+echo link_tag('css/stylesheet.css');
 $maanden = array("", "januari","februari","maart","april","mei","juni","juli","augustus","september","oktober","november","december");
 
 $laatsemaand = '';
